@@ -1,11 +1,7 @@
-module GroupAndCount
-  
-  class Hash
-    
-    def hmap(&prc)
-      
-    end
+class Hash
 
+  def hmap(&prc)
+    self.map { |k, v| [k, prc.call(v)] }
+    .to_h
   end
-
 end
