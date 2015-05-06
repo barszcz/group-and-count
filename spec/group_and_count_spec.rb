@@ -68,7 +68,7 @@ describe Array do
         { a: 1, b: 2, d: 8 },
         { a: 1, b: 2, d: 7, foobar: 22 },
         { a: 1, b: 3, c: 47, d: 8, idunnolol: "I dunno lol" },
-        { a: 3, b: 4, d: 2, name: "Lil B", based_level: 31 }
+        { a: 3, b: 4, d: 2, name: "Lil B", title: "The Based God", based_level: 31 }
       ]
     end
 
