@@ -21,6 +21,33 @@ end
 
 describe Array do
   describe '#group_and_count' do
+
+    let(:albums) do
+      [
+        { artist: "The Velvet Underground", album: "White Light/White Heat" },
+        { artist: "The Velvet Underground", album: "Loaded" },
+        { artist: "Stereolab", album: "Emperor Tomato Ketchup" }
+      ]
+    end
+
+    let(:counted_albums) do
+      {
+        "The Velvet Underground" => 2,
+        "Stereolab" => 1
+      }
+    end
+    
+    it 'returns a simple count when no keys are given' do
+      counted = albums.group_and_count([])
+      expect(counted).to eq 3
+    end
+
+    it 'handles a simple case (1 key)' do
+      gc = albums.group_and_count([:artist])
+      expect(gc).to eq(counted_albums)
+    end
+
+
     let(:events) do
       [
         { event: 'bill.split', user: 'Ray Green', city: 'Boston', time_of_day: 'morning', timestamp: 23981398 },
@@ -52,12 +79,8 @@ describe Array do
 
     let(:events_keys) { [:event, :city, :time_of_day] }
 
-    it "returns a simple count when no keys are given" do
-      counted = events.group_and_count([])
-      expect(counted).to eq 5
-    end
 
-    it "returns properly grouped and counted results" do
+    it 'handles a more complex case' do
       gc = events.group_and_count(events_keys)
       expect(gc).to eq(counted_events)
     end

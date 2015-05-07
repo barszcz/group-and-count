@@ -1,6 +1,11 @@
 class Hash
   def hmap(&prc)
-    map { |k, v| [k, prc.call(v)] }.to_h
+    mapped = {}
+    each { |k, v| mapped[k] = prc.call(v) }
+    mapped
+
+    # one-liner, less space-efficient
+    # map { |k, v| [k, prc.call(v)] }.to_h
   end
 end
 
